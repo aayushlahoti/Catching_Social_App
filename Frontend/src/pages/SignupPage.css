@@ -1,0 +1,50 @@
+.signup-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0F0F14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 400px;
+  z-index: 10;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.submit-error {
+  color: #ff4444;
+  font-size: 14px;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-disabled:hover {
+  transform: none;
+}

@@ -1,0 +1,19 @@
+.custom-button {
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.custom-button:active {
+  transform: scale(0.98);
+}

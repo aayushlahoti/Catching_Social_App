@@ -1,11 +1,32 @@
 {
   "name": "catching-new-workspace",
   "version": "1.0.0",
+  "description": "Catching Social App",
+  "main": "Backend/server.js",
   "scripts": {
-    "dev": "npm run dev --prefix CATCHING",
-    "server": "npm run server --prefix CATCHING",
-    "client": "npm run client --prefix CATCHING",
-    "test": "npm run test --prefix CATCHING",
-    "build": "npm run build --prefix CATCHING"
+    "install-all": "npm install && npm install --prefix Frontend",
+    "build": "npm run build --prefix Frontend",
+    "start": "node Backend/server.js",
+    "server": "nodemon Backend/server.js",
+    "client": "npm run dev --prefix Frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "node Backend/automated_nearby_test.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.2",
+    "multer": "^1.4.5-lts.1",
+    "redis": "^4.6.15",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4"
   }
 }
