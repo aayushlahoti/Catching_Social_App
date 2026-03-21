@@ -10,10 +10,6 @@ lerna-debug.log*
 dist/
 dist-ssr/
 *.local
-tsconfig.app.json
-tsconfig.node.json
-tsconfig.json
-vite.config.ts
 
 # Editor directories and files
 .vscode/*
