@@ -42,12 +42,9 @@ export function SocketProvider({ children }: { children: ReactNode }) {
   // In production getSocketUrl() returns '', so fall back to current origin
   // (Socket.IO will connect to the same host serving the frontend)
   const socketUrl = useMemo(() => {
-    const url =
-      getSocketUrl(8000) ||
-      (import.meta.env.VITE_SOCKET_URL as string) ||
-      (import.meta.env.VITE_SERVER_URL as string) ||
-      window.location.origin   // always works — same host in production
-    return url
+    // getSocketUrl() returns '' on production domains (e.g. onrender.com),
+    // so fall back to window.location.origin which always points to the correct host.
+    return getSocketUrl(8000) || window.location.origin
   }, [])
 
   useEffect(() => {
