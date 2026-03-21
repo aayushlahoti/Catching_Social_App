@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+**/node_modules/
+package-lock.json
+
+# Environment variables
+.env
+**/.env
+
+# Build artifacts
+dist/
+build/
+**/dist/
+**/build/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Project specific
+picUploads/
+**/picUploads/
+
+REDIS_ON_RENDER.md
+REDIS_STATUS.md
+VERIFICATION_CHECKLIST.md
+CROSS_NETWORK_SETUP.md
+IMPLEMENTATION_SUMMARY.md
+WALKTHROUGH.md
+QUICK_NETWORK_REFERENCE.md
