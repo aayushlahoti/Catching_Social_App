@@ -1,9 +1,8 @@
 {
-  "name": "catching-new-root",
+  "name": "catching-new-workspace",
   "version": "1.0.0",
   "scripts": {
     "dev": "npm run dev --prefix CATCHING",
-    "start": "npm run start --prefix CATCHING",
     "server": "npm run server --prefix CATCHING",
     "client": "npm run client --prefix CATCHING",
     "test": "npm run test --prefix CATCHING",
