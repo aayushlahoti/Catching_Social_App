@@ -37,18 +37,14 @@ export const getServerUrl = (backendPort: number = 8000): string => {
   const host = getCurrentHost();
   const protocol = window.location.protocol;
   
-  // If we're on a network IP (not localhost), construct URL with backend port
-  if (!isLocalhost()) {
+  // If we're on a local network IP or localhost, construct URL with backend port
+  const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+  if (isLocalhost() || ipRegex.test(host)) {
     return `${protocol}//${host}:${backendPort}`;
   }
   
-  // For localhost, use the environment variable or construct the URL
-  const envUrl = import.meta.env.VITE_SERVER_URL;
-  if (envUrl) {
-    return envUrl;
-  }
-  
-  return `${protocol}//${host}:${backendPort}`;
+  // For production domains (like onrender.com), use the domain directly without a port
+  return `${protocol}//${host}`;
 };
 
 /**
@@ -61,8 +57,14 @@ export const getSocketUrl = (backendPort: number = 8000): string => {
   const host = getCurrentHost();
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
   
-  // Construct URL with host and backend port
-  return `${protocol.replace(':', '')}//${host}:${backendPort}`;
+  // If we're on a local network IP or localhost, append the port
+  const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+  if (isLocalhost() || ipRegex.test(host)) {
+    return `${protocol.replace(':', '')}//${host}:${backendPort}`;
+  }
+
+  // For production domains, no port
+  return `${protocol.replace(':', '')}//${host}`;
 };
 
 /**
