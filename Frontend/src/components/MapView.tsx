@@ -7,7 +7,8 @@ import { useSocket } from '../contexts/SocketContext'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../utils/api'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
+import { getServerUrl } from '../utils/networkHelpers'
 import './MapView.css'
 
 // Helper component to center the map when coordinates change
@@ -25,7 +26,7 @@ function MapView() {
   const { nearbyUsers } = useSocket()
   const { user } = useAuth()
   const navigate = useNavigate()
-  const apiBaseUrl = (import.meta.env.VITE_SERVER_URL as string) || ''
+  const apiBaseUrl = useMemo(() => getServerUrl(), []);
 
   const joinUrl = (base: string, p: string) => {
     const b = base.replace(/\/+$/, '')

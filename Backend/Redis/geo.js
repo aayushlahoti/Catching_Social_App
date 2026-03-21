@@ -29,40 +29,28 @@ async function getNearbyUsers(latitude, longitude, radiusKm = 3) {
     const client = redisClient.getClient();
     if (!client) return [];
 
-    // GEOSEARCH key FROMLONLAT lon lat BYRADIUS radius km WITHDIST WITHCOORD ASC
-    const result = await client.sendCommand([
-        'GEOSEARCH',
-        GEO_KEY,
-        'FROMLONLAT',
-        String(longitude),
-        String(latitude),
-        'BYRADIUS',
-        String(radiusKm),
-        'km',
-        'WITHDIST',
-        'WITHCOORD',
-        'ASC'
+    const result = await client.geoSearchWith(GEO_KEY, {
+        longitude,
+        latitude
+    }, {
+        radius: radiusKm,
+        unit: 'km'
+    }, [
+        'DIST',
+        'COORD'
     ]);
 
-    // result: [ [member, dist, [lon, lat]], ... ]
+    // result: [ { member, distance, coordinates: { latitude, longitude } }, ... ]
     if (!Array.isArray(result)) return [];
 
-    return result
-        .map((row) => {
-            if (!Array.isArray(row) || row.length < 3) return null;
-            const member = row[0];
-            const dist = row[1];
-            const coord = row[2];
-            if (!Array.isArray(coord) || coord.length < 2) return null;
-            const lng = Number(coord[0]);
-            const lat = Number(coord[1]);
-            return {
-                userId: String(member),
-                distanceKm: Number(dist),
-                coords: { lat, lng }
-            };
-        })
-        .filter(Boolean);
+    return result.map(u => ({
+        userId: String(u.member),
+        distanceKm: Number(u.distance),
+        coords: {
+            lat: Number(u.coordinates.latitude),
+            lng: Number(u.coordinates.longitude)
+        }
+    }));
 }
 
 // Removing when users are offline
