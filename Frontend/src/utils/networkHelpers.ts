@@ -43,8 +43,9 @@ export const getServerUrl = (backendPort: number = 8000): string => {
     return `${protocol}//${host}:${backendPort}`;
   }
   
-  // For production domains (like onrender.com), use the domain directly without a port
-  return `${protocol}//${host}`;
+  // For production domains (like onrender.com), skip the host/port to use relative paths
+  // This is safer and avoids CORS/mixed-content issues
+  return '';
 };
 
 /**
@@ -63,8 +64,8 @@ export const getSocketUrl = (backendPort: number = 8000): string => {
     return `${protocol.replace(':', '')}//${host}:${backendPort}`;
   }
 
-  // For production domains, no port
-  return `${protocol.replace(':', '')}//${host}`;
+  // For production domains, use the current host relative to the browser
+  return ''; 
 };
 
 /**

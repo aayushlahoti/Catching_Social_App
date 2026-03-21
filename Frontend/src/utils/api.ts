@@ -117,6 +117,7 @@ export const api = {
         }
       }
     } catch (error) {
+      console.error('Signup Network Error details:', error);
       return {
         success: false,
         message: 'Network error. Please try again.',
@@ -164,6 +165,7 @@ export const api = {
         }
       }
     } catch (error) {
+      console.error('Login Network Error details:', error);
       return {
         success: false,
         message: 'Network error. Please try again.',
