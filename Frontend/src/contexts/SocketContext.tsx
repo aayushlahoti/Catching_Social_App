@@ -39,18 +39,19 @@ export function SocketProvider({ children }: { children: ReactNode }) {
   const [nearbyUsers, setNearbyUsers] = useState<NearbyUser[]>([])
   const [notifications, setNotifications] = useState<any[]>([])
 
-  const socketUrl = useMemo(
-    () =>
-      getSocketUrl(8000) || // Use helper function for automatic IP detection
+  // In production getSocketUrl() returns '', so fall back to current origin
+  // (Socket.IO will connect to the same host serving the frontend)
+  const socketUrl = useMemo(() => {
+    const url =
+      getSocketUrl(8000) ||
       (import.meta.env.VITE_SOCKET_URL as string) ||
       (import.meta.env.VITE_SERVER_URL as string) ||
-      (import.meta.env.VITE_API_BASE_URL as string) ||
-      '',
-    []
-  )
+      window.location.origin   // always works — same host in production
+    return url
+  }, [])
 
   useEffect(() => {
-    if (!accessToken || !socketUrl) {
+    if (!accessToken) {
       return
     }
 
