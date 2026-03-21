@@ -1,11 +1,13 @@
 {
   "name": "catching-new-workspace",
   "version": "1.0.0",
+  "workspaces": [
+    "Frontend"
+  ],
   "description": "Catching Social App",
   "main": "Backend/server.js",
   "scripts": {
     "install-all": "npm install && npm install --prefix Frontend",
-    "postinstall": "npm install --prefix Frontend",
     "build": "npm run build --prefix Frontend",
     "start": "node Backend/server.js",
     "server": "nodemon Backend/server.js",
