@@ -8,8 +8,8 @@
   "main": "Backend/server.js",
   "scripts": {
     "install-all": "npm install && npm install --prefix Frontend",
-    "build": "npm run build --prefix Frontend",
-    "start": "node Backend/server.js",
+    "build": "npm install",
+    "start": "node server.js",
     "server": "nodemon Backend/server.js",
     "client": "npm run dev --prefix Frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",

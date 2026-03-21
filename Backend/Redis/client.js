@@ -124,10 +124,14 @@ class RedisClient {
         }
     }
     async disconnect() {
-        if (this.client) {
-            await this.client.quit();
-            this.isConnected = false;
-            console.log('Redis client disconnected');
+        if (this.client && this.isConnected) {
+            try {
+                await this.client.quit();
+                this.isConnected = false;
+                console.log('✅ Redis client disconnected');
+            } catch (error) {
+                console.error('Error during Redis disconnect:', error.message);
+            }
         }
     }
     async set(key, value, expireSeconds = null) {
