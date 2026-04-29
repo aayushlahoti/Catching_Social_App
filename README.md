@@ -15,7 +15,7 @@
 • Connect to people who are online under 3km radius
 • Live chat window
 
-#### SECURITY FEATURES 🛡️
+### SECURITY FEATURES 🛡️
 • JWT authentication + sessions
 • Chat deletes when users go offline 
 • Permission for turning on location 
