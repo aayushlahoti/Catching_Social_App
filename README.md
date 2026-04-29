@@ -91,7 +91,7 @@ Ensure you have the following installed on your system:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/catching-new.git
+   git clone https://github.com/aayushlahoti/catching-new.git
    cd catching-new
    ```
 
@@ -343,13 +343,13 @@ catching-new/
 
 ## 🤝 Contributing
 
-I welcome contributions from the community! Here's how you can help:
+I welcome contributions from the community and new ideas are welcomed!! Here's how you can help:
 
 ### Steps to Contribute
 
 1. **Fork the repository**
    ```bash
-   git clone https://github.com/yourusername/catching-new.git
+   git clone https://github.com/aayushlahoti/catching-new.git
    cd catching-new
    ```
 
@@ -400,4 +400,6 @@ Found a bug? Have a suggestion? Please open an issue on GitHub with:
 
 ---
 
- - **Contact Details:** mail: aayushlahoti0@gmail.com
+ - **Contact Details:**  aayushlahoti0@gmail.com
+
+
